@@ -50,7 +50,12 @@ public class BasketPage extends BaseClass{
 			
 			Assert.assertTrue("Maybe the item wasn't added into the basket", total.contains(qty + " " + basket));
 		}else{
-			
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				
+				e.printStackTrace();
+			}
 			Assert.assertTrue("Maybe the items wasn't added into the basket", total.contains(qty + " " + basket +"s"));
 		}
 		

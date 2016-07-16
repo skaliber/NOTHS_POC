@@ -17,6 +17,8 @@ public class Navigate extends BaseClass {
 	public void Go(String URL){
 		
 		driver.navigate().to(URL);
+		driver.manage().deleteAllCookies();
+		driver.navigate().refresh();
 		
 		while (wait.waitForJSandJQueryToLoad() == false) {
 			try {

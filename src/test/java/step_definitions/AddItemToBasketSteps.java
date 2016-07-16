@@ -54,7 +54,7 @@ public class AddItemToBasketSteps{
     public void item_should_be_added_to_my_basket(int arg1) throws Throwable {
     	
     	page.Basket().CheckItemIsAddedIntoBasket(false,arg1);
-    	Thread.sleep(1500);
+    	
     }
     
 }
