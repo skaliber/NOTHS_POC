@@ -10,7 +10,7 @@ import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
-public class SharedDriver extends EventFiringWebDriver {
+public class Driver extends EventFiringWebDriver {
 
 	public static WebDriver REAL_DRIVER;
 	
@@ -29,7 +29,7 @@ public class SharedDriver extends EventFiringWebDriver {
 		 
 	}
 
-	public SharedDriver() {
+	public Driver() {
 		super(REAL_DRIVER);
 	}
 	

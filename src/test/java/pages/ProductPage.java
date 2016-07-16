@@ -4,6 +4,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import com.thoughtworks.selenium.webdriven.commands.Click;
+
 import utils.Wait;
 
 public class ProductPage extends BaseClass{
@@ -21,33 +23,47 @@ public class ProductPage extends BaseClass{
 	
 	@FindBy(how=How.CLASS_NAME, using="add_to_cart_button")
 	public static WebElement addTobasketButton;
+	
+	@FindBy(how=How.CLASS_NAME, using="quantity_input")
+	public static WebElement qty;
+	
 
-	public  void  AddItemToBasket(Boolean option){
+	public  void  AddItemToBasket(Boolean qtydefault,Integer value){
 		
-		if(option){
+		if(qtydefault)
+		{
 			
 			ChooseOption();
+			
 			ClickOnAddToBasket();
+			
+			
+		}else{
+			ChangeQty(value);
+			ChooseOption();
+			ClickOnAddToBasket();
+			
 		}
-		else {
-			ClickOnAddToBasket();
-		}	
 	}
+	
 	
 	public void ChooseOption(){
 		
-		option.sendKeys("A5");
+		action().type(false, option, "A5");
 		
 	}
 	
 	public void ClickOnAddToBasket(){
 		
 		addTobasketButton.click();
-		Wait.WaitAWhile(6);
 		
 	}
 	
-	
+	public void ChangeQty(Integer value){
+		
+		action().type(true, qty, value.toString());
+		
+	}
 
 }
 		

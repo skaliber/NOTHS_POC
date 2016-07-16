@@ -1,7 +1,11 @@
 package pages;
 
+import helper.SeleniumActions;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+
+import utils.Wait;
 
 public class BaseClass
 {
@@ -31,5 +35,10 @@ public class BaseClass
     	
     	return new ProductPage(driver);
     }
+  
+  public SeleniumActions action(){
+	  
+	  return new SeleniumActions(driver);
+  }
 
 }

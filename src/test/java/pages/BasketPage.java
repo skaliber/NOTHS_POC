@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import utils.Wait;
+
 
 public class BasketPage extends BaseClass{
 
@@ -22,17 +24,36 @@ public class BasketPage extends BaseClass{
 	@FindBy(how=How.CSS, using="#basket .total")
 	public static WebElement basketItems;
 	
-	public static String basket = "1 item";
+	public static String basket = "item";
 	
 	public static String productName ="Typography Print";
 	
-	public BasketPage CheckItemIsAddedIntoBasket(){
+	public BasketPage CheckItemIsAddedIntoBasket(Boolean defaultqty,Integer qty){
+		
+		for (int i = 0; i < 5; i++) {
+			
+			if (IsBasketModalDisplayed() == false) {
+				
+				Wait.WaitAWhile(1);
+			}else{
+				
+				Assert.assertTrue("basket modal should be displayed", IsBasketModalDisplayed());
+			}
+		}
 		
 		Assert.assertTrue("basket modal should be displayed", IsBasketModalDisplayed());
 		
 		String total = basketItems.getText();
 		
-		Assert.assertTrue("Maybe the item wasn't added into the basket", total.contains(basket));
+		
+		if (defaultqty) {
+			
+			Assert.assertTrue("Maybe the item wasn't added into the basket", total.contains(qty + " " + basket));
+		}else{
+			
+			Assert.assertTrue("Maybe the items wasn't added into the basket", total.contains(qty + " " + basket +"s"));
+		}
+		
 		
 		return this;
 	}

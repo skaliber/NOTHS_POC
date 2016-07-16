@@ -10,7 +10,7 @@ import pages.ProductPage;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import driver.SharedDriver;
+import driver.Driver;
 
 public class AddItemToBasketSteps{
 	
@@ -18,7 +18,7 @@ public class AddItemToBasketSteps{
     BaseClass page;
     public AddItemToBasketSteps()
     {
-    	driver = SharedDriver.REAL_DRIVER;
+    	driver = Driver.REAL_DRIVER;
     	this.page = new BaseClass(driver); 
     }
     
@@ -32,22 +32,29 @@ public class AddItemToBasketSteps{
     @When("^I change the qty to be (\\d+)$")
     public void i_change_the_qty_to_be(int arg1) throws Throwable {
        
-        
+    	page.Addtobasket().AddItemToBasket(false,arg1);
     }
     
     @When("^And I click on Add to basket button$")
     public void and_I_click_on_Add_to_basket_button() throws Throwable {
     	
     	
-    	page.Addtobasket().AddItemToBasket(true);
+    	page.Addtobasket().AddItemToBasket(true,1);
     	
     }
 
     @Then("^Item should be added to my basket$")
     public void item_should_be_added_to_my_basket() throws Throwable {
         
-    	page.Basket().CheckItemIsAddedIntoBasket();
+    	page.Basket().CheckItemIsAddedIntoBasket(true,1);
     	
+    }
+    
+    @Then("^Item should be added to my basket (\\d+)$")
+    public void item_should_be_added_to_my_basket(int arg1) throws Throwable {
+    	
+    	page.Basket().CheckItemIsAddedIntoBasket(false,arg1);
+    	Thread.sleep(1500);
     }
     
 }
