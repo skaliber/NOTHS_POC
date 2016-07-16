@@ -6,9 +6,9 @@ import org.openqa.selenium.support.How;
 
 import utils.Wait;
 
-public class AddToBasketPage extends BaseClass{
+public class ProductPage extends BaseClass{
 
-	public AddToBasketPage(WebDriver driver){
+	public ProductPage(WebDriver driver){
 		super(driver);
 	
 	}    

@@ -3,9 +3,10 @@ package step_definitions;
 
 import org.openqa.selenium.WebDriver;
 
+import pages.BaseClass;
 import pages.BasketPage;
 import pages.Navigate;
-import pages.AddToBasketPage;
+import pages.ProductPage;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -14,22 +15,17 @@ import driver.SharedDriver;
 public class AddItemToBasketSteps{
 	
     public WebDriver driver;
-    AddToBasketPage product;
-    Navigate navigate;
-    BasketPage basket;
+    BaseClass page;
     public AddItemToBasketSteps()
     {
     	driver = SharedDriver.REAL_DRIVER;
-    	this.product = new AddToBasketPage(driver);
-    	this.navigate = new Navigate(driver);
-    	this.basket = new BasketPage(driver);
-    	
+    	this.page = new BaseClass(driver); 
     }
     
     @Given("^When I navigate to the \"(.*?)\" page$")
     public void when_I_navigate_to_the_page(String arg1) throws Throwable {
     	
-    	navigate.Go("http://www.notonthehighstreet.com" + arg1);
+    	page.Navigate().Go("http://www.notonthehighstreet.com" + arg1);
     }
    
 
@@ -43,14 +39,14 @@ public class AddItemToBasketSteps{
     public void and_I_click_on_Add_to_basket_button() throws Throwable {
     	
     	
-    	product.AddItemToBasket(true);
+    	page.Addtobasket().AddItemToBasket(true);
     	
     }
 
     @Then("^Item should be added to my basket$")
     public void item_should_be_added_to_my_basket() throws Throwable {
         
-    	basket.CheckItemIsAddedIntoBasket();
+    	page.Basket().CheckItemIsAddedIntoBasket();
     	
     }
     

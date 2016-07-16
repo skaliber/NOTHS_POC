@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public abstract class BaseClass
+public class BaseClass
 {
 	protected static WebDriver driver;
 	public static boolean bResult;
@@ -15,7 +15,21 @@ public abstract class BaseClass
 		PageFactory.initElements(driver, this);
 		
 	}
+	
+	public Navigate Navigate(){
+		
+		return new Navigate(driver);
+		
+	}
 
-
+    public BasketPage Basket(){
+    	
+    	return new BasketPage(driver);
+    }
+    
+  public ProductPage Addtobasket(){
+    	
+    	return new ProductPage(driver);
+    }
 
 }

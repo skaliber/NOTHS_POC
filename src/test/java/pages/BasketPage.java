@@ -28,7 +28,7 @@ public class BasketPage extends BaseClass{
 	
 	public BasketPage CheckItemIsAddedIntoBasket(){
 		
-		Assert.assertTrue("basket modal should be displayed", IsBaketModalDisplayed());
+		Assert.assertTrue("basket modal should be displayed", IsBasketModalDisplayed());
 		
 		String total = basketItems.getText();
 		
@@ -37,7 +37,7 @@ public class BasketPage extends BaseClass{
 		return this;
 	}
 	
-	private Boolean IsBaketModalDisplayed(){
+	private Boolean IsBasketModalDisplayed(){
 		
 		if (basketModal.size() != 0)
 		{
