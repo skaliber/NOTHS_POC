@@ -12,16 +12,22 @@ So that I can purchase them
   | product | 
   |  "/themotivatedtype/product/choose-happy-and-laugh-often-typography-print"   |
    
-   @add2items 
-    Scenario Outline: Try to add product into basket without selecting requiered field
+   @addtwoitems 
+    Scenario Outline: Add same item qith quantity bigger than the one
     Given When I navigate to the <product> page
     When I change the qty to be 2
-    And And I click on Add to basket button
     Then Item should be added to my basket 2
     Examples:
   | product | 
   |  "/themotivatedtype/product/choose-happy-and-laugh-often-typography-print"   |
  
-    
+ 
+    @withoutoptions 
+    Scenario Outline: Try to add product into basket without selecting requiered field
+    Given When I navigate to the <product> page
+    And And I click on Add to basket button without having selected any options
+    Then I shoudl see en <error> message
+    Examples: 
+    | product | error |
+    |  "/themotivatedtype/product/choose-happy-and-laugh-often-typography-print"  | "Please enter a value" |
 
-    

@@ -10,10 +10,8 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		features = "classpath:features",
 		plugin = {"pretty", "html:target/cucumber-html-report"},
-		tags = {"@addoneitem,@add2items"}
+		tags = {}
 		)
 public class RunCukes{
 	
 }
-
-//@additeam1

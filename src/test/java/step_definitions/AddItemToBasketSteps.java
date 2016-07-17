@@ -4,9 +4,6 @@ package step_definitions;
 import org.openqa.selenium.WebDriver;
 
 import pages.BaseClass;
-import pages.BasketPage;
-import pages.Navigate;
-import pages.ProductPage;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -39,7 +36,7 @@ public class AddItemToBasketSteps{
     public void and_I_click_on_Add_to_basket_button() throws Throwable {
     	
     	
-    	page.Addtobasket().AddItemToBasket(true,1);
+    	page.Addtobasket().AddItemToBasket();
     	
     }
 
@@ -56,5 +53,20 @@ public class AddItemToBasketSteps{
     	page.Basket().CheckItemIsAddedIntoBasket(false,arg1);
     	
     }
+    
+    @Given("^And I click on Add to basket button without having selected any options$")
+    public void and_I_click_on_Add_to_basket_button_without_having_selected_any_options() throws Throwable {
+      
+    	page.Addtobasket().ClickOnAddToBasket();
+    	
+    }
+    
+    @Then("^I shoudl see en \"(.*?)\" message$")
+    public void i_shoudl_see_en_message(String arg1) throws Throwable {
+      
+    	page.Addtobasket().AddItemToBasket(arg1);
+    	
+    }
+
     
 }

@@ -5,8 +5,6 @@ import helper.SeleniumActions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import utils.Wait;
-
 public class BaseClass
 {
 	protected static WebDriver driver;

@@ -20,6 +20,7 @@ public class SeleniumActions extends BaseClass{
 			element.clear();
 			Wait.WaitAWhile(2);
 			element.sendKeys(text);
+			Wait.WaitAWhile(1);
 			
 		}else{
 			
